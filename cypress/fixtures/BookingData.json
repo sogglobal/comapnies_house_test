@@ -1,0 +1,7 @@
+{
+  "firstname": "John",
+  "lastname": "Doe",
+  "email": "john@example.com",
+  "phone": "1235454567890",
+  "roomType": "Suite"
+}
