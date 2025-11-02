@@ -19,6 +19,15 @@ Key Functional Areas:
 6. Negative validations (missing fields, invalid email, invalid dates).
 7. API call validation (request/response structure and HTTP status).
 
+Additional testing considerations (security & non-functional)
+
+Security: Input sanitisation (XSS), CSRF (if forms use cookies), rate limiting.
+
+Accessibility: run axe-core (cypress-axe) assertions in tests: ensure no high-impact violations on form page.
+
+Performance: hourly small-batch stress tests; spike tests using JMeter to test service throttling.
+
+Observability: add cy.intercept() to capture network errors and ensure error codes are surfaced.
 
  Tools & Framework
  Tool  Purpose 
