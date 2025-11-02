@@ -1,0 +1,77 @@
+Companies House – Lead Test Engineer Technical Assessment
+Candidate: Soala  Gbenedio
+Date:31 Oct 2025  
+Project:Cypress Automation – Booking Flow (https://automationintesting.online)  
+Objective:Validate core booking functionality (“Booking Today” and “Booking Confirmation” flows) for end-to-end booking creation and verification.
+
+Scope
+This test plan focuses on verifying that:
+- Users can make a booking successfully via the front-end form.
+- The booking data is correctly submitted, stored, and visible in the confirmation section.
+- Form validation, field-level error handling, and data persistence function as expected.
+
+Key Functional Areas:
+1. Home Page load and availability.
+2. Booking form input fields (Name, Email, Phone, Dates, Message).
+3. Date picker validation (today + future dates).
+4. Booking submission and confirmation message.
+5. Booking visibility in admin (if available).
+6. Negative validations (missing fields, invalid email, invalid dates).
+7. API call validation (request/response structure and HTTP status).
+
+
+ Tools & Framework
+ Tool  Purpose 
+ Cypress 13.x  UI Automation 
+ Node.js LTS  Runtime 
+ Mochawesome  Test report generation 
+ GitHub  Source control & submission 
+ Chrome Headless  Test browser execution 
+
+
+ Test Environment
+ Environment  URL 
+
+ Staging  [https://automationintesting.online](https://automationintesting.online)
+
+ Test Data
+ Field  Positive Example  Negative Example 
+--------------------------------------------
+ Name  "John Doe"  "" (empty) 
+ Email  "john.doe@email.com"  "john.doe@com" 
+ Phone  "07123456789"  "123" 
+ Dates  Today + Tomorrow  Past date 
+ Message  "Booking for 2 nights"  "" (empty) 
+
+  Test Execution Strategy
+- Automated using Cypress.
+- Run both in headless (CI) and interactive (local) mode.
+- Assertions cover DOM validation, form submission, and API response verification.
+- Non-functional checks (basic performance and network response times).
+
+ Test Case Coverage Summary
+ ID  Test Area  Description  Status 
+--------------------------------------
+ TC-001  Booking Form Load  Verify form elements render 
+ TC-002  Booking - Happy Path  Valid booking submission 
+ TC-003  Booking - Invalid Email  Show validation error 
+ TC-004  Booking - Missing Fields  Show “required” messages 
+ TC-005  Booking - Date Validation  Past date rejected 
+ TC-006  Booking Confirmation  Booking appears on page / API response 200
+
+Reporting
+Reports generated automatically with **Mochawesome**:
+- Output: `reports/html/index.html`
+- Includes screenshots on failure and execution timestamps.
+
+ Risks / Mitigation
+ Risk  Mitigation 
+-------------------
+ Site downtime  Mock API or skip test 
+ Slow network  Increase `defaultCommandTimeout` 
+ Dynamic content (ads/iframes)  Disable via test config 
+
+  Exit Criteria
+- All functional tests must pass.
+- All P1 and P2 defects resolved or deferred with justification.
+- HTML report attached to submission.
